@@ -1,2 +1,2 @@
-# qt5-conda-build
-A repository to build binaries of qt5 for anaconda
+# pyqt5-conda-build
+A repository to build binaries of pyqt5 for anaconda
