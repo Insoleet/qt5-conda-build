@@ -28,17 +28,17 @@ install:
   # as well as pip, conda-build, and the binstar CLI
   - powershell .\\appveyor\\install.ps1
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-  - choco install -y vcredist2013
+  - "echo %PATH%"
   - "%CMD_IN_ENV% conda config --set always_yes yes --set changeps1 no"
   - "%CMD_IN_ENV% conda install conda-build"
-  - "%CMD_IN_ENV% conda install anaconda"
+  - "%CMD_IN_ENV% conda install anaconda-client"
 
 build_script:
   - ".\\appveyor\\build.cmd"
   # Move the conda package into the current directory, to register it
   # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
   # we'll use a simple python script.
-  - python ..\appveyor\move_conda_pkg.py qt5
+  - python appveyor\move_conda_pkg.py qt5
 
 artifacts:
   # Archive the generated conda package in the ci.appveyor.com build report.
@@ -48,4 +48,4 @@ on_success:
   # Upload built binaries to binstar.org. The globbing and handling of the
   # exit-status code is tricky in cmd.exe or powershell, so we're just using
   # a python script.
-  - python ..\appveyor\anaconda_push.py
+  - python appveyor\anaconda_push.py
