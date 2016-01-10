@@ -14,7 +14,7 @@ set SQLITE3SRCDIR=%SRC_DIR%\qtbase\src\3rdparty\sqlite
 :: See http://doc-snapshot.qt-project.org/qt5-5.4/windows-requirements.html
 
 :: this needs to be CALLed due to an exit statement at the end of configure:
-CALL configure -platform win32-msvc2010 ^
+CALL configure -platform win32-msvc2013 ^
       -prefix %PREFIX% ^
       -libdir %PREFIX%\Library\lib\qt5 ^
       -bindir %PREFIX%\Scripts ^
