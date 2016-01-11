@@ -1,7 +1,7 @@
 :: set path to find resources shipped with qt-5
 :: see http://doc-snapshot.qt-project.org/qt5-5.4/windows-building.html
 set PATH=%SRC_DIR%\qtbase\bin;%SRC_DIR%\gnuwin32\bin;%PATH%
-set QMAKESPEC=win32-msvc2010
+set QMAKESPEC=win32-msvc2015
 
 :: make sure we can find ICU and openssl:
 set INCLUDE=%PREFIX%\Library\include;C:\OpenSSL-Win64\include;%INCLUDE%
@@ -14,7 +14,7 @@ set SQLITE3SRCDIR=%SRC_DIR%\qtbase\src\3rdparty\sqlite
 :: See http://doc-snapshot.qt-project.org/qt5-5.4/windows-requirements.html
 
 :: this needs to be CALLed due to an exit statement at the end of configure:
-CALL configure -platform win32-msvc2013 ^
+CALL configure -platform %QMAKESPEC% ^
       -prefix %PREFIX% ^
       -libdir %PREFIX%\Library\lib\qt5 ^
       -bindir %PREFIX%\Scripts ^
